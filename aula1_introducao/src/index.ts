@@ -1,4 +1,4 @@
-import Cliente from './cliente';
+import Cliente from './Cliente';
 import Endereco from './Endereco';
 import Telefone from './Telefone';
 import Produto from './Produto';
