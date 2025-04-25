@@ -38,7 +38,7 @@ productsRouter.put('/:id', async(req, res, next) =>{
 
 productsRouter.delete('/:id', async(req, res, next) =>{
     try{
-        await productsController.update(req, res, next);
+        await productsController.delete(req, res, next);
     }catch(err){
         next(err)
     }

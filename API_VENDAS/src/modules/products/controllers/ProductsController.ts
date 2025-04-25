@@ -1,9 +1,9 @@
 import {Request, Response, NextFunction } from "express";
 import ListProductService from "../services/ListProductService";
-import ShowProductService from "../services/ListProductService";
 import CreateProductService from "../services/CreateProductService";
 import UpdateProductService from "../services/UpdateProductService";
 import DeleteProductService from "../services/DeleteProductService";
+import ShowProductService from "../services/ShowProductService";
 
 export default class ProductController{
     public async index(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
@@ -54,7 +54,7 @@ export default class ProductController{
         }
     }
 
-    public async delet(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
+    public async delete(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
 
         try{
             const{id} = request.params;
