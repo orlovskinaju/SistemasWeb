@@ -1,10 +1,11 @@
 import { Router } from "express";
 import ProductController from "../controllers/ProductsController";
+import { celebrate, Joi, Segments } from "celebrate";
 
 const productsRouter = Router();
 const productsController = new ProductController();
 
-productsRouter.get('/', async(req, res, next) =>{
+productsRouter.get("/", async(req, res, next) =>{
     try{
         await productsController.index(req, res, next);
     }catch(err){
@@ -12,7 +13,9 @@ productsRouter.get('/', async(req, res, next) =>{
     }
 });
 
-productsRouter.get('/:id', async(req, res, next) =>{
+productsRouter.get("/:id",celebrate({[Segments.PARAMS]: {id: Joi.string().uuid().required(),},
+}) , async(req, res, next) =>{
+
     try{
         await productsController.show(req, res, next);
     }catch(err){
@@ -20,7 +23,13 @@ productsRouter.get('/:id', async(req, res, next) =>{
     }
 });
 
-productsRouter.post('/', async(req, res, next) =>{
+productsRouter.post("/", celebrate({
+    [Segments.BODY]: {
+        name: Joi.string().required(),
+        price: Joi.number().precision(2).required(),
+        quantity: Joi.number().required(),
+    },}),async(req, res, next) =>{
+
     try{
         await productsController.create(req, res, next);
     }catch(err){
@@ -28,7 +37,13 @@ productsRouter.post('/', async(req, res, next) =>{
     }
 });
 
-productsRouter.put('/:id', async(req, res, next) =>{
+productsRouter.put("/:id", celebrate({
+    [Segments.PARAMS]: {id: Joi.string().uuid().required(),},
+    [Segments.BODY]: {
+        name: Joi.string().required(),
+        price: Joi.number().precision(2).required(),
+        quantity: Joi.number().required(),}
+}) ,async(req, res, next) =>{
     try{
         await productsController.update(req, res, next);
     }catch(err){
@@ -36,7 +51,8 @@ productsRouter.put('/:id', async(req, res, next) =>{
     }
 });
 
-productsRouter.delete('/:id', async(req, res, next) =>{
+productsRouter.delete("/:id", celebrate({[Segments.PARAMS]: {id: Joi.string().uuid().required(),},
+}), async(req, res, next) =>{
     try{
         await productsController.delete(req, res, next);
     }catch(err){
