@@ -33,3 +33,11 @@ npm i -D @types/joi
 
 npm run typeorm migration:create -- -n CreateUsers
 npm run typeorm migration:runs
+
+npm i bcryptjs
+npm i -D @types/bcryptjs
+
+npm i jsonwebtoken
+npm i -D @types/jsonwebtoken
+
+criar nosso type

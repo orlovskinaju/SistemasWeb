@@ -26,8 +26,8 @@ productsRouter.get("/:id",celebrate({[Segments.PARAMS]: {id: Joi.string().uuid()
 productsRouter.post("/", celebrate({
     [Segments.BODY]: {
         name: Joi.string().required(),
-        price: Joi.number().precision(2).required(),
-        quantity: Joi.number().required(),
+        price: Joi.number().precision(2).min(0).required(),
+        quantity: Joi.number().min(0).required(),
     },}),async(req, res, next) =>{
 
     try{
@@ -41,8 +41,8 @@ productsRouter.put("/:id", celebrate({
     [Segments.PARAMS]: {id: Joi.string().uuid().required(),},
     [Segments.BODY]: {
         name: Joi.string().required(),
-        price: Joi.number().precision(2).required(),
-        quantity: Joi.number().required(),}
+        price: Joi.number().precision(2).min(0).required(),
+        quantity: Joi.number().min(0).required(),}
 }) ,async(req, res, next) =>{
     try{
         await productsController.update(req, res, next);
