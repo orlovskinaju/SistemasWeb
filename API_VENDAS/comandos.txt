@@ -41,3 +41,9 @@ npm i jsonwebtoken
 npm i -D @types/jsonwebtoken
 
 criar nosso type
+
+npm i multer
+npm i -D @types/multer
+
+npm run typeorm migration:create -- -n CreateUserTokens
+npm run typeorm migration:run
