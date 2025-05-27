@@ -47,3 +47,31 @@ npm i -D @types/multer
 
 npm run typeorm migration:create -- -n CreateUserTokens
 npm run typeorm migration:run
+
+npm i date-fns
+
+npm i nodemailer
+npm i -D @types/nodemailer
+
+npm i handlebars
+
+para criar os Coustomers
+
+npm run typeorm migrations:create -- -n CreateCustomers
+tem que arrumar antes de disparar
+npm run typeorm migration:run
+
+npm run typeorm migrations:create -- -n CreateOrders
+npm run typeorm migration:run
+
+npm run typeorm migrations:create -- -n AddCustomerIdToOrders
+npm run typeorm migration:run
+
+npm run typeorm migrations:create -- -n CreateOrdersProducts
+npm run typeorm migration:run
+
+npm run typeorm migrations:create -- -n AddOrderIdToOrdersProducts
+npm run typeorm migration:run
+
+npm run typeorm migrations:create -- -n AddProductIdToOrdersProducts
+npm run typeorm migration:run
